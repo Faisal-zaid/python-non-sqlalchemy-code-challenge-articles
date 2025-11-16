@@ -2,7 +2,7 @@ class Article:
     all = []  # track all article instances
 
     def __init__(self, author, magazine, title):
-        # --- validations ---
+        # validations 
         if not isinstance(title, str) or not (5 <= len(title) <= 50):
             raise Exception("title must be a string between 5 and 50 characters")
 
@@ -12,7 +12,7 @@ class Article:
 
         Article.all.append(self)
 
-    # --- Title property (immutable) ---
+    # Title property (immutable) 
     @property
     def title(self):
         return self._title
@@ -22,7 +22,7 @@ class Article:
         # ignore reassignment to keep title immutable
         pass
 
-    # --- Author property ---
+    #  Author property 
     @property
     def author(self):
         return self._author
@@ -33,7 +33,7 @@ class Article:
             raise Exception("author must be an Author instance")
         self._author = value
 
-    # --- Magazine property ---
+    # Magazine property 
     @property
     def magazine(self):
         return self._magazine
@@ -51,7 +51,7 @@ class Author:
             raise Exception("name must be a non-empty string")
         self._name = name
 
-    # --- Name property (immutable) ---
+    #  Name property (immutable) 
     @property
     def name(self):
         return self._name
@@ -61,14 +61,14 @@ class Author:
         # ignore reassignment to keep name immutable
         pass
 
-    # --- Relationship methods ---
+    # Relationship methods 
     def articles(self):
         return [article for article in Article.all if article.author == self]
 
     def magazines(self):
         return list({article.magazine for article in self.articles()})
 
-    # --- Association methods ---
+    # Association methods 
     def add_article(self, magazine, title):
         return Article(self, magazine, title)
 
@@ -85,7 +85,7 @@ class Magazine:
         self.category = category
         Magazine.all.append(self)
 
-    # --- Name property (mutable) ---
+    # Name property (mutable) 
     @property
     def name(self):
         return self._name
@@ -96,7 +96,7 @@ class Magazine:
             self._name = value
         # else ignore invalid assignments to pass tests
 
-    # --- Category property (mutable) ---
+    #  Category property (mutable) 
     @property
     def category(self):
         return self._category
@@ -107,14 +107,14 @@ class Magazine:
             self._category = value
         # else ignore invalid assignments
 
-    # --- Relationship methods ---
+    #  Relationship methods 
     def articles(self):
         return [article for article in Article.all if article.magazine == self]
 
     def contributors(self):
         return list({article.author for article in self.articles()})
 
-    # --- Association methods ---
+    #  Association methods 
     def article_titles(self):
         titles = [article.title for article in self.articles()]
         return titles if titles else None
@@ -124,7 +124,7 @@ class Magazine:
         result = [a for a in set(authors) if authors.count(a) > 2]
         return result if result else None
 
-    # --- Bonus ---
+    # Bonus 
     @classmethod
     def top_publisher(cls):
         if not Article.all:
