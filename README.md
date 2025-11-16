@@ -17,14 +17,14 @@ Git
 
 ### Installation instruction
 ```
-Git clone git@github.com:Faisal-zaid/code-challenge-01.git
+Git clone git@github.com:Faisal-zaid/python-non-sqlalchemy-code-challenge-articles.git
 
-
+```
 
 ## Technologies used
 
 Github
-Javascript
+python
 
 ## Support and contact details
 https://github.com/Faisal-zaid
